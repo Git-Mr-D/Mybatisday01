@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--同类名路径-->
+<mapper namespace="mapper.EmpMapperImpl">
+    <!--查询所有-->
+    <select id="selectAll" resultType="pojo.Emp">
+       select * from emp
+    </select>
+
+    <!--根据id查询-->
+    <select id="selectById" resultType="pojo.Emp" parameterType="Integer">
+        select * from emp WHERE empno=#{empno}
+    </select>
+
+    <!--删除-->
+    <delete id="deleteById" parameterType="Integer">
+         delete from emp where empno=#{empno}
+    </delete>
+
+    <!--添加-->
+    <insert id="insertAll" parameterType="pojo.Emp">
+         insert emp(empno,ename,job,mgr,hiredate,sal,COMM,deptno)values(#{empno},#{ename},#{job},#{mgr},#{hiredate},#{sal},#{COMM},#{deptno})
+    </insert>
+
+    <!--修改-->
+    <update id="updateById" parameterType="pojo.Emp">
+        update emp set ename=#{ename},job=#{job},mgr=#{mgr},hiredate=#{hiredate},sal=#{sal},COMM=#{COMM},deptno=#{deptno} where empno=#{empno}
+    </update>
+</mapper>
